@@ -1,6 +1,5 @@
 ﻿using System.Security.Claims;
 using Application.Core.User;
-using Application.Core.User.Queries.GetById;
 using Application.Core.User.Queries.GetByUsernameOrMail;
 using Application.Core.User.Queries.GetByUsernameOrMailAndPassword;
 using Application.Services;
@@ -12,7 +11,7 @@ using Domain;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Projet_Groupe4_Backend.Controllers.UserControllers;
+namespace Lulitaire.Controllers.UserControllers;
 [ApiController]
 [Route("api/users")]
 [Tags("Users")]
