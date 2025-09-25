@@ -1,5 +1,6 @@
 using System.Text;
 using Application.Core.User;
+using Infrastructure;
 using Application.Core.User.Commands.PatchEmailAddress;
 using Application.Core.User.Queries.GetById;
 using Application.Core.User.Queries.GetByUsernameOrMail;
@@ -14,11 +15,9 @@ using Application.user.queries;
 using Application.user.queries.getAll;
 using Application.user.queries.GetByUsernameOrMailAndPassword;
 using Application.utils;
-using Infrastructure;
 using Infrastructure.Repositories.Generic;
 using Infrastructure.Repositories.User;
 using Infrastructure.Repository;
-using Lulitaire;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
@@ -125,7 +124,7 @@ public class Program
         var app = builder.Build();
         using (var scope = app.Services.CreateScope())
         {
-            var db = scope.ServiceProvider.GetRequiredService<DbContext>();
+            var db = scope.ServiceProvider.GetRequiredService<AppDbContext>();
             db.Database.Migrate();
         }
 
