@@ -2,7 +2,7 @@ name: Trigger Deploy Repo
 on:
   push:
     branches:
-      - main
+      - master
 
 jobs:
   trigger-deploy:
