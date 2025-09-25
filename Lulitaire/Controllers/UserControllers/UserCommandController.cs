@@ -12,7 +12,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Lulitaire.Controllers.UserControllers;
 [ApiController]
-[Route("users")]
+[Route("api/users")]
 [Tags("Users")]
 
 public class UserCommandController : ControllerBase

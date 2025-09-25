@@ -14,7 +14,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Projet_Groupe4_Backend.Controllers.UserControllers;
 [ApiController]
-[Route("users")]
+[Route("api/users")]
 [Tags("Users")]
 
 public class UserQueryController :ControllerBase
