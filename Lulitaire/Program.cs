@@ -123,6 +123,11 @@ public class Program
             });
         });
         var app = builder.Build();
+        using (var scope = app.Services.CreateScope())
+        {
+            var db = scope.ServiceProvider.GetRequiredService<DbContext>();
+            db.Database.Migrate();
+        }
 
         // Pipeline de traitement
         if (app.Environment.IsDevelopment())
