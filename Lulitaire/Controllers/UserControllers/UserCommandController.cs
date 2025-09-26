@@ -42,7 +42,7 @@ public class UserCommandController : ControllerBase
         {
             return BadRequest(new { message = e.Message });
         }
-        catch (AlreadyExistsException<User> e)
+        catch (Exception e)
         {
             return Conflict(new {message = e.Message});
         }
@@ -106,8 +106,9 @@ public class UserCommandController : ControllerBase
     {
         try
         {
-            if (User.FindFirst(ClaimTypes.NameIdentifier)?.Value != id.ToString() && User.FindFirst(ClaimTypes.Role)?.Value != "Admin")
-                    throw new UnauthorizedAccessException();
+            if (User.FindFirst(ClaimTypes.NameIdentifier)?.Value != id.ToString() &&
+                User.FindFirst(ClaimTypes.Role)?.Value != "Admin")
+                throw new UnauthorizedAccessException();
             command.Id = id;
             _userCommandProcessor.PatchUsername(command);
             UserGetByUsernameOrMailAndPasswordQuery query = new UserGetByUsernameOrMailAndPasswordQuery()
@@ -115,14 +116,14 @@ public class UserCommandController : ControllerBase
                 Role = User.FindFirst(ClaimTypes.Role).Value,
                 UsernameOrMail = command.Username,
                 Password = ""
-                
+
             };
             var token = _service.GenerateJwtToken(query, command.Id.ToString());
             Response.Cookies.Append("AuthToken", token, new CookieOptions
             {
-                HttpOnly = true, 
-                Secure = true,        
-                SameSite = SameSiteMode.Strict, 
+                HttpOnly = true,
+                Secure = true,
+                SameSite = SameSiteMode.Strict,
                 Expires = DateTimeOffset.UtcNow.AddMinutes(30)
             });
             return NoContent();

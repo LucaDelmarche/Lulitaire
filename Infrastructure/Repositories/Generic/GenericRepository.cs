@@ -1,7 +1,7 @@
-using Infrastructure.Repositories.Generic;
+using Infrastructure.Repository;
 using Microsoft.EntityFrameworkCore;
 
-namespace Infrastructure.Repository;
+namespace Infrastructure.Repositories.Generic;
 
 public class GenericRepository<T> : IGenericRepository<T> where T : class, IHasId
 {
@@ -19,9 +19,9 @@ public class GenericRepository<T> : IGenericRepository<T> where T : class, IHasI
         return DbSet.Find(id);
     }
     
-    public IEnumerable<T?> GetAll()
+    public IQueryable<T?> GetAll()
     {
-        return DbSet.ToList();
+        return DbSet.AsQueryable();
     }
 
     public T? Add(T? entity)

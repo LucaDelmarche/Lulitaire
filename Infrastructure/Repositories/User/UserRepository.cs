@@ -1,4 +1,5 @@
 ﻿using Infrastructure.Entities;
+using Infrastructure.Repositories.Generic;
 using Infrastructure.Repositories.User;
 
 namespace Infrastructure.Repository;

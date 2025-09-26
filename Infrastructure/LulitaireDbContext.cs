@@ -30,5 +30,13 @@ public class AppDbContext : DbContext
             //     .HasForeignKey(tierList => tierList.UserId)
             //     .OnDelete(DeleteBehavior.Cascade);
         });
+        modelBuilder.Entity<DbZone>(builder =>
+        {
+            builder.ToTable("zones");
+            builder.HasKey(e => e.Id);
+            builder.Property(x => x.Id).HasColumnName("id");
+            builder.Property(x => x.Id_user).HasColumnName("id_user");
+            builder.Property(x => x.Name).HasColumnName("name");
+        });
     }
 }

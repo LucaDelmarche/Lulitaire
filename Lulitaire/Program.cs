@@ -5,6 +5,12 @@ using Application.Core.User.Commands.PatchEmailAddress;
 using Application.Core.User.Queries.GetById;
 using Application.Core.User.Queries.GetByUsernameOrMail;
 using Application.Core.User.Queries.GetByUsernameOrMailAndPassword;
+using Application.Features.Zone.Commands;
+using Application.Features.Zone.Commands.Create;
+using Application.Features.Zone.Commands.Delete;
+using Application.Features.Zone.Commands.PatchUsername;
+using Application.Features.Zone.Queries;
+using Application.Features.Zone.Queries.GetAll;
 using Application.Services;
 using Application.user.commands;
 using Application.user.commands.create;
@@ -92,17 +98,25 @@ public class Program
         // Enregistrement des handler
         //user
         builder.Services.AddScoped<ICommandHandler<UserCreateCommand,UserCreateOutput.UserCreateDto>, UserCreateHandler>();
+        builder.Services.AddScoped<ICommandHandler<ZoneCreateCommand,ZoneCreateOutput.ZoneCreateDto>, ZoneCreateHandler>();
         builder.Services.AddScoped<UserEmptyQueryProcessor>();
+        builder.Services.AddScoped<ZoneEmptyQueryProcessor>();
+        builder.Services.AddScoped<IEmptyQueryHandler<ZoneGetallOutput>, ZoneEmptyGetAllHandler>();
+        builder.Services.AddScoped<ZoneQueryProcessor>();
         builder.Services.AddScoped<UserQueryProcessor>();
         builder.Services.AddScoped<UserCommandProcessor>();
+        builder.Services.AddScoped<ZoneCommandProcessor>();
         builder.Services.AddScoped<IEmptyQueryHandler<UserGetallOutput>, UserGetAllHandler>();
+        builder.Services.AddScoped<IQueryHandler<ZoneGetAllQuery,ZoneGetallOutput>, ZoneGetAllHandler>();
         builder.Services.AddScoped<IEmptyQueryHandler<UserGetCurrentUserOutput>, UserGetCurrentUserHandler>();
         
         builder.Services.AddScoped<IQueryHandler<UserGetByUsernameOrMailAndPasswordQuery,UserGetByUsernameOrMailAndPasswordOutput>, UserGetByUsernameOrMailAndPasswordHandler>();
         builder.Services.AddScoped<IEmptyOutputCommandHandler<int>, UserDeleteHandler>();
+        builder.Services.AddScoped<IEmptyOutputCommandHandler<ZoneDeleteCommand>, ZoneDeleteHandler>();
         builder.Services.AddScoped<IEmptyOutputCommandHandler<UserPutCommand>,UserPutHandler>();
         builder.Services.AddScoped<IEmptyOutputCommandHandler<UserPatchRoleCommand>,UserPatchRoleHandler>();
         builder.Services.AddScoped<IEmptyOutputCommandHandler<UserPatchUsernameCommand>,UserPatchUsernameHandler>();
+        builder.Services.AddScoped<IEmptyOutputCommandHandler<ZonePatchCommand>,ZonePatchUsernameHandler>();
         builder.Services.AddScoped<IEmptyOutputCommandHandler<UserPatchEmailAddressCommand>,UserPatchEmailAddressHandler>();
         builder.Services.AddScoped<IQueryHandler<UserGetByUsernameOrMailQuery,UserGetByUsernameOrMailOutput>, UserGetByUsernameOrMailHandler>();
         builder.Services.AddScoped<IQueryHandler<UserGetByIdQuery,UserGetByIdOutput>, UserGetByIdHandler>();

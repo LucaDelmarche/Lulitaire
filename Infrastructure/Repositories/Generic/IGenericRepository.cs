@@ -1,3 +1,4 @@
+using Infrastructure.Entities;
 using Infrastructure.Repository;
 
 namespace Infrastructure.Repositories.Generic;
@@ -5,7 +6,7 @@ namespace Infrastructure.Repositories.Generic;
 public interface IGenericRepository<T> where T : class, IHasId
 {
     T? GetById(int id); // Obtenir par ID
-    IEnumerable<T?> GetAll();
+    IQueryable<T?> GetAll();
     // IEnumerable<DbEntity?> GetEntityByType(int type);
     T? Add(T? entity);
     
@@ -19,4 +20,5 @@ public interface IGenericRepository<T> where T : class, IHasId
     T? Update(T? entityToUpdate);
 
     public bool FindUserByIdBool(int commandEntityId);
+    void Delete(T? entity);
 }
