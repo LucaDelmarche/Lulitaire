@@ -53,6 +53,29 @@ namespace Infrastructure.Migrations
 
                     b.ToTable("users", (string)null);
                 });
+
+            modelBuilder.Entity("Infrastructure.Entities.DbZone", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasColumnName("id");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("Id_user")
+                        .HasColumnType("int")
+                        .HasColumnName("id_user");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)")
+                        .HasColumnName("name");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("zones", (string)null);
+                });
 #pragma warning restore 612, 618
         }
     }
