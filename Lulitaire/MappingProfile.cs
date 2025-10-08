@@ -2,6 +2,7 @@
 using Application.Core.User.Queries.GetById;
 using Application.Core.User.Queries.GetByUsernameOrMail;
 using Application.Core.User.Queries.GetByUsernameOrMailAndPassword;
+using Application.Features.Item.Commands.Create;
 using Application.Features.Zone.Commands.Create;
 using Application.user.commands.create;
 using Application.user.commands.put;
@@ -21,6 +22,8 @@ public class MappingProfile : Profile
         CreateMap<User, DbUser>();
         CreateMap<DbZone, Zone>();
         CreateMap<Zone, DbZone>();
+        CreateMap<DbItem, DbItem>();
+        CreateMap<DbItem, DbItem>();
 
         CreateMap<DbUser, UserGetByUsernameOrMailOutput>();
         CreateMap<UserGetByUsernameOrMailOutput,DbUser>();
@@ -56,6 +59,14 @@ public class MappingProfile : Profile
         CreateMap<DbZone, ZoneCreateOutput.ZoneCreateDto>();
         CreateMap<DbZone, ZoneCreateOutput>();
         CreateMap<ZoneCreateCommand, DbZone>();
+        
+        CreateMap<ItemCreateOutput.ItemCreateDto, Item>();
+        CreateMap<ItemCreateOutput.ItemCreateDto, DbItem>();
+        CreateMap<DbItem, ItemCreateOutput.ItemCreateDto>();
+        CreateMap<Item, ItemCreateOutput.ItemCreateDto>();
+        CreateMap<Item, ItemCreateOutput>();
+        CreateMap<ItemCreateCommand, Item>();
+        
         //Mapping utile pour la modification d'un utilisateur
         CreateMap<UserPutCommand, DbUser>()
             .ForMember(dest => dest.Password, opt => opt.MapFrom(src => Encoding.UTF8.GetBytes(src.Password)));

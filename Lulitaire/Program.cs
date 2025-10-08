@@ -5,6 +5,10 @@ using Application.Core.User.Commands.PatchEmailAddress;
 using Application.Core.User.Queries.GetById;
 using Application.Core.User.Queries.GetByUsernameOrMail;
 using Application.Core.User.Queries.GetByUsernameOrMailAndPassword;
+using Application.Features.Item.Commands;
+using Application.Features.Item.Commands.Create;
+using Application.Features.Item.Queries;
+using Application.Features.Item.Queries.GetAll;
 using Application.Features.Zone.Commands;
 using Application.Features.Zone.Commands.Create;
 using Application.Features.Zone.Commands.Delete;
@@ -99,15 +103,25 @@ public class Program
         //user
         builder.Services.AddScoped<ICommandHandler<UserCreateCommand,UserCreateOutput.UserCreateDto>, UserCreateHandler>();
         builder.Services.AddScoped<ICommandHandler<ZoneCreateCommand,ZoneCreateOutput.ZoneCreateDto>, ZoneCreateHandler>();
+        builder.Services.AddScoped<ICommandHandler<ItemCreateCommand,ItemCreateOutput.ItemCreateDto>, ItemCreateHandler>();
+        
         builder.Services.AddScoped<UserEmptyQueryProcessor>();
-        builder.Services.AddScoped<ZoneEmptyQueryProcessor>();
+        builder.Services.AddScoped<ZoneEmptyQueryProcessor>(); 
+        builder.Services.AddScoped<ItemEmptyQueryProcessor>();
+        
         builder.Services.AddScoped<IEmptyQueryHandler<ZoneGetallOutput>, ZoneEmptyGetAllHandler>();
+        builder.Services.AddScoped<IEmptyQueryHandler<ItemGetallOutput>, ItemEmptyGetAllHandler>();
         builder.Services.AddScoped<ZoneQueryProcessor>();
         builder.Services.AddScoped<UserQueryProcessor>();
+        builder.Services.AddScoped<ItemQueryProcessor>();
+        
         builder.Services.AddScoped<UserCommandProcessor>();
         builder.Services.AddScoped<ZoneCommandProcessor>();
+        builder.Services.AddScoped<ItemCommandProcessor>();
+        
         builder.Services.AddScoped<IEmptyQueryHandler<UserGetallOutput>, UserGetAllHandler>();
         builder.Services.AddScoped<IQueryHandler<ZoneGetAllQuery,ZoneGetallOutput>, ZoneGetAllHandler>();
+        builder.Services.AddScoped<IQueryHandler<ItemGetAllQuery,ItemGetallOutput>, ItemGetAllHandler>();
         builder.Services.AddScoped<IEmptyQueryHandler<UserGetCurrentUserOutput>, UserGetCurrentUserHandler>();
         
         builder.Services.AddScoped<IQueryHandler<UserGetByUsernameOrMailAndPasswordQuery,UserGetByUsernameOrMailAndPasswordOutput>, UserGetByUsernameOrMailAndPasswordHandler>();
