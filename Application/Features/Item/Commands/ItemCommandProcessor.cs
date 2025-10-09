@@ -1,4 +1,5 @@
 ﻿using Application.Features.Item.Commands.Create;
+using Application.Features.Item.Commands.Patch;
 using Application.Features.Zone.Commands.Create;
 using Application.Features.Zone.Commands.Delete;
 using Application.Features.Zone.Commands.PatchUsername;
@@ -11,14 +12,14 @@ public class ItemCommandProcessor
 {
     private readonly ICommandHandler<ItemCreateCommand,ItemCreateOutput.ItemCreateDto> _itemCommandProcessor;
     private readonly IEmptyOutputCommandHandler<ItemDeleteCommand> _itemEmptyCommandProcessorDelete;
-    private readonly IEmptyOutputCommandHandler<ZonePatchCommand> _zoneEmptyCommandProcessorPatch;
+    private readonly IEmptyOutputCommandHandler<ItemPatchCommand> _itemEmptyCommandProcessorPatch;
 
 
-    public ItemCommandProcessor(ICommandHandler<ItemCreateCommand, ItemCreateOutput.ItemCreateDto> itemCommandProcessor, IEmptyOutputCommandHandler<ItemDeleteCommand> itemEmptyCommandProcessorDelete, IEmptyOutputCommandHandler<ZonePatchCommand> zoneEmptyCommandProcessorPatch)
+    public ItemCommandProcessor(ICommandHandler<ItemCreateCommand, ItemCreateOutput.ItemCreateDto> itemCommandProcessor, IEmptyOutputCommandHandler<ItemDeleteCommand> itemEmptyCommandProcessorDelete, IEmptyOutputCommandHandler<ItemPatchCommand> itemEmptyCommandProcessorPatch)
     {
         _itemCommandProcessor = itemCommandProcessor;
         _itemEmptyCommandProcessorDelete = itemEmptyCommandProcessorDelete;
-        _zoneEmptyCommandProcessorPatch = zoneEmptyCommandProcessorPatch;
+        _itemEmptyCommandProcessorPatch = itemEmptyCommandProcessorPatch;
     }
 
     public ItemCreateOutput.ItemCreateDto Create(ItemCreateCommand command) {
@@ -30,8 +31,8 @@ public class ItemCommandProcessor
         
         _itemEmptyCommandProcessorDelete.Handle(command);
     }
-    public void Patch(ZonePatchCommand command)
+    public void Patch(ItemPatchCommand command)
     {
-        _zoneEmptyCommandProcessorPatch.Handle(command);
+        _itemEmptyCommandProcessorPatch.Handle(command);
     }
 }

@@ -27,7 +27,7 @@ namespace Application.Features.Item.Queries.GetAll
                         Id_user = zone.UserId,
                         Quantity = zone.Quantity,
                         Unit = zone.Unit,
-                        ExpirationDate = zone.ExpritationData,
+                        ExpirationDate = zone.ExpirationDate,
                         ZoneId = zone.ZoneId
                     })
                     .ToList()

@@ -35,7 +35,7 @@ public class ItemEmptyQueryProcessor
                     Id_user = item.UserId,
                     Quantity = item.Quantity,
                     Unit = item.Unit,
-                    ExpirationDate = item.ExpritationData,
+                    ExpirationDate = item.ExpirationDate,
                 })
                 .ToList()
         };

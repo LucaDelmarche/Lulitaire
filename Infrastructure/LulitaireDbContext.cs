@@ -49,7 +49,7 @@ public class AppDbContext : DbContext
             builder.Property(x => x.Name).HasColumnName("name");
             builder.Property(x => x.Quantity).HasColumnName("quantity");
             builder.Property(x => x.Location).HasColumnName("location");
-            builder.Property(x => x.ExpritationData).HasColumnName("expirationDate");
+            builder.Property(x => x.ExpirationDate).HasColumnName("expirationDate");
         });
     }
 }

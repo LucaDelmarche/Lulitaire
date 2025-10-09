@@ -6,7 +6,7 @@ public class DbItem : IHasId
 {
     public int Id { get; set; }
     public string Name { get; set; }
-    public string ExpritationData { get; set; }
+    public string ExpirationDate { get; set; }
     public double Quantity { get; set; }
     public string Unit { get; set; }
     public int ZoneId { get; set; }

@@ -31,7 +31,7 @@ public class ItemCreateHandler : ICommandHandler<ItemCreateCommand, ItemCreateOu
             UserId = userId,
             Quantity = command.Quantity,
             Unit = command.Unit,
-            ExpritationData = command.ExpirationDate,
+            ExpirationDate = command.ExpirationDate,
             ZoneId = command.ZoneId,
             Location = command.Location
         };

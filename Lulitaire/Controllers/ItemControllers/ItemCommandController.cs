@@ -2,6 +2,7 @@
 using System.Security.Claims;
 using Application.Features.Item.Commands;
 using Application.Features.Item.Commands.Create;
+using Application.Features.Item.Commands.Patch;
 using Application.Features.Zone.Commands;
 using Application.Features.Zone.Commands.Create;
 using Application.Features.Zone.Commands.Delete;
@@ -83,7 +84,7 @@ public class ItemCommandController : ControllerBase
     [ProducesResponseType(StatusCodes.Status204NoContent)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
-    public ActionResult Patch([FromBody] ZonePatchCommand command,int id)
+    public ActionResult Patch([FromBody] ItemPatchCommand command,int id)
     {
         try
         {

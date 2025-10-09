@@ -34,7 +34,7 @@ public class ItemGetAllHandler : IQueryHandler<ItemGetAllQuery,ItemGetallOutput>
                 Id_user = item.UserId,
                 Quantity = item.Quantity,
                 Unit = item.Unit,
-                ExpirationDate = item.ExpritationData,
+                ExpirationDate = item.ExpirationDate,
                 ZoneId = item.ZoneId,
                 Location = item.Location
             };

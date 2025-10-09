@@ -3,6 +3,7 @@ using Application.Core.User.Queries.GetById;
 using Application.Core.User.Queries.GetByUsernameOrMail;
 using Application.Core.User.Queries.GetByUsernameOrMailAndPassword;
 using Application.Features.Item.Commands.Create;
+using Application.Features.Item.Commands.Patch;
 using Application.Features.Zone.Commands.Create;
 using Application.user.commands.create;
 using Application.user.commands.put;
@@ -64,6 +65,10 @@ public class MappingProfile : Profile
         CreateMap<ItemCreateOutput.ItemCreateDto, DbItem>();
         CreateMap<DbItem, ItemCreateOutput.ItemCreateDto>();
         CreateMap<Item, ItemCreateOutput.ItemCreateDto>();
+        CreateMap<Item, ItemCreateOutput>();
+        CreateMap<DbItem, Item>();
+        CreateMap<ItemPatchCommand, Item>();
+        CreateMap<Item, DbItem>();
         CreateMap<Item, ItemCreateOutput>();
         CreateMap<ItemCreateCommand, Item>();
         

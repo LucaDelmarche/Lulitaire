@@ -14,6 +14,7 @@ public class Item
         Quantity = quantity;
         ExpirationDate = expirationDate;
     }
+    public Item() { }
 
     public string Name
     {
@@ -34,7 +35,7 @@ public class Item
     public string ExpirationDate
     {
         get => _expirationDate;
-        set => GenericSetter.SetString(value, 10, "Expiration Data");
+        set => _expirationDate = GenericSetter.SetString(value, 10, "Expiration Data");
     }
     private string _unit;
     public string Unit
