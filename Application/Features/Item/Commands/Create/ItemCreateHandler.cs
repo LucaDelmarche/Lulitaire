@@ -22,7 +22,7 @@ public class ItemCreateHandler : ICommandHandler<ItemCreateCommand, ItemCreateOu
     public ItemCreateOutput.ItemCreateDto Handle(ItemCreateCommand command)
     {
         int userId = int.Parse(command.user_id!);
-
+        var item = new Domain.Item(command.Name, command.Quantity, command.Unit, command.ExpirationDate, command.Location);
         // Crée l'entité
         var dbItem = new DbItem
         {
@@ -32,7 +32,8 @@ public class ItemCreateHandler : ICommandHandler<ItemCreateCommand, ItemCreateOu
             Quantity = command.Quantity,
             Unit = command.Unit,
             ExpritationData = command.ExpirationDate,
-            ZoneId = command.ZoneId
+            ZoneId = command.ZoneId,
+            Location = command.Location
         };
 
         // Ajoute et retourne la zone créée

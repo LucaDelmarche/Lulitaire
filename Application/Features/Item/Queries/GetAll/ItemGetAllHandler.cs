@@ -35,7 +35,8 @@ public class ItemGetAllHandler : IQueryHandler<ItemGetAllQuery,ItemGetallOutput>
                 Quantity = item.Quantity,
                 Unit = item.Unit,
                 ExpirationDate = item.ExpritationData,
-                ZoneId = item.ZoneId
+                ZoneId = item.ZoneId,
+                Location = item.Location
             };
             
             if (itemDto.Id_user == int.Parse(input.id_user) && itemDto.ZoneId == input.id_zone)

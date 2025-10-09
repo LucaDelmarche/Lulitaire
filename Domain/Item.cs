@@ -6,8 +6,10 @@ public class Item
 {
     private string _name;
 
-    public Item(string name, double quantity, string expirationDate)
+    public Item(string name, double quantity, string unit,string expirationDate, string location)
     {
+        Unit = unit;
+        Location = location;
         Name = name;
         Quantity = quantity;
         ExpirationDate = expirationDate;
@@ -33,5 +35,18 @@ public class Item
     {
         get => _expirationDate;
         set => GenericSetter.SetString(value, 10, "Expiration Data");
+    }
+    private string _unit;
+    public string Unit
+    {
+        get => _unit;
+        set => _unit = GenericSetter.SetString(value, 20, "Item unit");
+    }
+    private string _location;
+
+    public string Location
+    {
+        get => _location;
+        set => _location = GenericSetter.SetString(value, 100, "Item location");
     }
 }

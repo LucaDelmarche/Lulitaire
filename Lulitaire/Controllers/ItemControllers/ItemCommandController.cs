@@ -61,7 +61,7 @@ public class ItemCommandController : ControllerBase
         try
         {
             string? userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
-            ZoneDeleteCommand command = new ZoneDeleteCommand
+            ItemDeleteCommand command = new ItemDeleteCommand
             {
                 id = id,
                 userId = userId
@@ -69,7 +69,7 @@ public class ItemCommandController : ControllerBase
             _itemCommandProcessor.Delete(command);
             return NoContent();
         }
-        catch (EntityNotFoundException<User> e)
+        catch (EntityNotFoundException<Item> e)
         {
             return NotFound(new {message = e.Message });
         }

@@ -22,15 +22,15 @@ public class ItemEmptyQueryProcessor
     {
         return _itemGetAllHandler.Handle();
     }
-    public ItemGetallOutput HandleForUser(string userId)
+    public ItemGetallOutput HandleForUser(string userId, int zoneId)
     {
         return new ItemGetallOutput
         {
             Items = _repository.GetAll()
-                .Where(item => item.UserId == int.Parse(userId))
+                .Where(item => item!.UserId == int.Parse(userId) && item.ZoneId == zoneId)
                 .Select(item => new ItemGetallOutput.ItemDto
                 {
-                    Id = item.Id,
+                    Id = item!.Id,
                     Name = item.Name,
                     Id_user = item.UserId,
                     Quantity = item.Quantity,

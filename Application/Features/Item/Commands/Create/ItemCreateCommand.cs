@@ -13,4 +13,5 @@ public class ItemCreateCommand
     [BindNever] // Ne lie pas ce champ depuis la requête
     [SwaggerSchema(ReadOnly = true)] 
     public string? user_id { get; set; }
+    public string Location { get; set; }
 }

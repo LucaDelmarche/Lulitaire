@@ -14,6 +14,7 @@ public class ItemGetallOutput
         public string Unit { get; set; }
         public string ExpirationDate { get; set; }
         public int ZoneId { get; set; }
+        public string Location { get; set; }
     }
 }
 

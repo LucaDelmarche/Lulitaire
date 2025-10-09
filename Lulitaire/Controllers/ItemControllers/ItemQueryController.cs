@@ -46,8 +46,7 @@ public class ItemQueryController :ControllerBase
                 .Take(pageSize)
                 .ToList();
     
-            var totalEntities = _itemEmptyQueryProcessor.HandleForUser(User.FindFirst(ClaimTypes.NameIdentifier)?.Value!).Items.Count();
-    
+            var totalEntities = _itemEmptyQueryProcessor.HandleForUser(User.FindFirst(ClaimTypes.NameIdentifier)?.Value!,idZone).Items.Count();
             var result = new 
             {
                 TotalItems = totalEntities,

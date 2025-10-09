@@ -10,7 +10,7 @@ namespace Application.Services;
 
 public class TokenService
 {
-    private const double EXPIRY_DURATION_MINUTES = 30000000;
+    private const double EXPIRY_DURATION_MINUTES = 1440;
     private readonly IConfiguration _configuration;
     private JwtSecurityToken _token;
 

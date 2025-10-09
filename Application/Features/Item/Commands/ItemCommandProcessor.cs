@@ -10,14 +10,14 @@ namespace Application.Features.Item.Commands;
 public class ItemCommandProcessor
 {
     private readonly ICommandHandler<ItemCreateCommand,ItemCreateOutput.ItemCreateDto> _itemCommandProcessor;
-    private readonly IEmptyOutputCommandHandler<ZoneDeleteCommand> _zoneEmptyCommandProcessorDelete;
+    private readonly IEmptyOutputCommandHandler<ItemDeleteCommand> _itemEmptyCommandProcessorDelete;
     private readonly IEmptyOutputCommandHandler<ZonePatchCommand> _zoneEmptyCommandProcessorPatch;
 
 
-    public ItemCommandProcessor(ICommandHandler<ItemCreateCommand, ItemCreateOutput.ItemCreateDto> itemCommandProcessor, IEmptyOutputCommandHandler<ZoneDeleteCommand> zoneEmptyCommandProcessorDelete, IEmptyOutputCommandHandler<ZonePatchCommand> zoneEmptyCommandProcessorPatch)
+    public ItemCommandProcessor(ICommandHandler<ItemCreateCommand, ItemCreateOutput.ItemCreateDto> itemCommandProcessor, IEmptyOutputCommandHandler<ItemDeleteCommand> itemEmptyCommandProcessorDelete, IEmptyOutputCommandHandler<ZonePatchCommand> zoneEmptyCommandProcessorPatch)
     {
         _itemCommandProcessor = itemCommandProcessor;
-        _zoneEmptyCommandProcessorDelete = zoneEmptyCommandProcessorDelete;
+        _itemEmptyCommandProcessorDelete = itemEmptyCommandProcessorDelete;
         _zoneEmptyCommandProcessorPatch = zoneEmptyCommandProcessorPatch;
     }
 
@@ -25,10 +25,10 @@ public class ItemCommandProcessor
         return _itemCommandProcessor.Handle(command);
     }
 
-    public void Delete(ZoneDeleteCommand command)
+    public void Delete(ItemDeleteCommand command)
     {
         
-        _zoneEmptyCommandProcessorDelete.Handle(command);
+        _itemEmptyCommandProcessorDelete.Handle(command);
     }
     public void Patch(ZonePatchCommand command)
     {

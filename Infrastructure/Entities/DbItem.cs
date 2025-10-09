@@ -11,4 +11,5 @@ public class DbItem : IHasId
     public string Unit { get; set; }
     public int ZoneId { get; set; }
     public int UserId { get; set; }
+    public string Location { get; set; }
 }

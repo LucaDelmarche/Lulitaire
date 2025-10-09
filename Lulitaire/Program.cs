@@ -7,6 +7,7 @@ using Application.Core.User.Queries.GetByUsernameOrMail;
 using Application.Core.User.Queries.GetByUsernameOrMailAndPassword;
 using Application.Features.Item.Commands;
 using Application.Features.Item.Commands.Create;
+using Application.Features.Item.Commands.Delete;
 using Application.Features.Item.Queries;
 using Application.Features.Item.Queries.GetAll;
 using Application.Features.Zone.Commands;
@@ -127,6 +128,7 @@ public class Program
         builder.Services.AddScoped<IQueryHandler<UserGetByUsernameOrMailAndPasswordQuery,UserGetByUsernameOrMailAndPasswordOutput>, UserGetByUsernameOrMailAndPasswordHandler>();
         builder.Services.AddScoped<IEmptyOutputCommandHandler<int>, UserDeleteHandler>();
         builder.Services.AddScoped<IEmptyOutputCommandHandler<ZoneDeleteCommand>, ZoneDeleteHandler>();
+        builder.Services.AddScoped<IEmptyOutputCommandHandler<ItemDeleteCommand>, ItemDeleteHandler>();
         builder.Services.AddScoped<IEmptyOutputCommandHandler<UserPutCommand>,UserPutHandler>();
         builder.Services.AddScoped<IEmptyOutputCommandHandler<UserPatchRoleCommand>,UserPatchRoleHandler>();
         builder.Services.AddScoped<IEmptyOutputCommandHandler<UserPatchUsernameCommand>,UserPatchUsernameHandler>();
