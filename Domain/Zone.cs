@@ -8,7 +8,7 @@ public class Zone
 
     public Zone(string name)
     {
-        _name = name;
+        Name = name;
     }
 
     public string Name

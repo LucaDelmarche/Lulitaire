@@ -31,7 +31,8 @@ public class ZoneCreateHandler : ICommandHandler<ZoneCreateCommand, ZoneCreateOu
 
         if (exists)
             throw new AlreadyExistsException<Domain.Zone>(command.Name);
-
+        var zone = new Domain.Zone(command.Name);
+        
         // Crée l'entité
         var dbZone = new DbZone
         {

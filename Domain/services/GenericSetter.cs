@@ -8,7 +8,6 @@ public class GenericSetter
             throw new ArgumentException($"{fieldName} cannot exceed {maxLength} characters.");
         return value;
     }
-
     public static double SetDouble(double value, string fieldName)
     {
         if (value < 0)

@@ -8,9 +8,9 @@ public class Item
 
     public Item(string name, double quantity, string expirationDate)
     {
-        _name = name;
-        _quantity = quantity;
-        _expirationDate = expirationDate;
+        Name = name;
+        Quantity = quantity;
+        ExpirationDate = expirationDate;
     }
 
     public string Name

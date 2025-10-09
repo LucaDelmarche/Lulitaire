@@ -28,9 +28,9 @@ public class ItemQueryController :ControllerBase
     }
     
     [Authorize]
-    [HttpGet("{id_zone}")]
+    [HttpGet]
     [ProducesResponseType(StatusCodes.Status200OK)]
-    public ActionResult<ItemGetallOutput> GetAll(int page, int pageSize, int id_zone)
+    public ActionResult<ItemGetallOutput> GetAll(int page, int pageSize, int idZone)
     {
         try
         {
@@ -38,7 +38,7 @@ public class ItemQueryController :ControllerBase
             ItemGetAllQuery query = new ItemGetAllQuery
             {
                 id_user = User.FindFirst(ClaimTypes.NameIdentifier)?.Value!,
-                id_zone = id_zone
+                id_zone = idZone
             };
             var entities = _itemQueryProcessor.GetAllItems(query)
                 .Items
