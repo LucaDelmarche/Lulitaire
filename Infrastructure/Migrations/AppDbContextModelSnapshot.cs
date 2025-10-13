@@ -30,7 +30,7 @@ namespace Infrastructure.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<string>("ExpritationData")
+                    b.Property<string>("ExpirationDate")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)")
                         .HasColumnName("expirationDate");
@@ -44,6 +44,10 @@ namespace Infrastructure.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)")
                         .HasColumnName("name");
+
+                    b.Property<double>("Price")
+                        .HasColumnType("float")
+                        .HasColumnName("price");
 
                     b.Property<double>("Quantity")
                         .HasColumnType("float")

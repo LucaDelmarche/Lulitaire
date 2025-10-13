@@ -6,13 +6,14 @@ public class Item
 {
     private string _name;
 
-    public Item(string name, double quantity, string unit,string expirationDate, string location)
+    public Item(string name, double quantity, string unit,string expirationDate, string location, double price = 0)
     {
         Unit = unit;
         Location = location;
         Name = name;
         Quantity = quantity;
         ExpirationDate = expirationDate;
+        Price = price;
     }
     public Item() { }
 
@@ -49,5 +50,13 @@ public class Item
     {
         get => _location;
         set => _location = GenericSetter.SetString(value, 100, "Item location");
+    }
+
+    private double _price;
+
+    public double Price
+    {
+        get => _price;
+        set => _price = GenericSetter.SetDouble(value, "Item price");
     }
 }
