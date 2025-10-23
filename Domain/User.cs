@@ -35,11 +35,11 @@ public class User
     {
         set
         {
-            Regex passwordCheck = new Regex(@"^(?=.*[A-Z])(?=.*[!@#$%^&*(),.?:{}|<>])(?=.{8,}).*");
+            Regex passwordCheck = new Regex(@"^(?=.*[A-Z])(?=.*[0-9])(?=.{12,}).*");
             if (string.IsNullOrWhiteSpace(value) || !passwordCheck.IsMatch(value))
             {
                 throw new ArgumentException("You must enter a password and the password must be at least 8 characters long with at least one upper case letter" +
-                                            ", one lowercase letter, and one special character.");
+                                            ", one lowercase letter, and one number.");
             }
 
             // Hachage du mot de passe reçu en texte clair
